@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+struct node{
+    node* next=NULL;
+    bool tail= false;
+    int contents;
+};
+node* curr;//curr is a pointer that exists at the start of the list before the first element
+
+class CircList{
+node *seek;
+public:
+
+CircList (){//creates a list of one node that points to itself
+	node *b= new node;
+		b->next = b;
+		curr->next=b;
+		b->tail=true;
+}
+
+bool empty(){
+	if(curr->next==NULL){
+		return true;
+	}
+}
+
+int size(CircList a){
+	if(curr->next==NULL){
+		cout<<"size is 0 \n";
+		return true;
+	}
+	seek=curr;
+    for(int i=0; i++;){
+	if(seek->tail==true){
+		cout<<"size is "<<i;
+	}
+	seek=seek->next;
+	}
+}
+
+void insert(int pos, int val){
+	if(curr->next ==NULL){//if inseting when the list is empty
+		node *b= new node;
+		b->next = b;
+		b->tail=true;
+        return;
+	}
+	
+    node *b= new node;
+		seek=curr->next;
+    for(int i=0;i<=pos; i++){
+		if(seek->tail==true){//if inserting at the end
+			seek->tail=false;
+			b->tail=true;
+			seek->next=b;
+			b->next=curr->next;
+		}
+		if(pos==i){//if inserting between two nodes
+			b->next = seek->next;
+			seek->next = b;
+		}
+            seek=seek->next;
+	}
+	}
+void remove(int a){//will be completed in the near future
+
+}
+    
+    void display(){//will also be completed in the near future
+        
+    }
+};	
