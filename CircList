@@ -6,68 +6,92 @@ struct node{
     bool tail= false;
     int contents;
 };
-node* curr;//curr is a pointer that exists at the start of the list before the first element
+node* start=NULL;//start is a pointer that exists at the start of the list before the first element
 
 class CircList{
 node *seek;
 public:
 
-CircList (){//creates a list of one node that points to itself
+CircList (){  //creates a list of one node that points to itself
 	node *b= new node;
+        b->contents=3;
 		b->next = b;
-		curr->next=b;
+		start=b;
 		b->tail=true;
 }
 
 bool empty(){
-	if(curr->next==NULL){
+	if(start==NULL){
 		return true;
 	}
+    return false;
 }
 
 int size(CircList a){
-	if(curr->next==NULL){
+	if(start==NULL){
 		cout<<"size is 0 \n";
 		return true;
 	}
-	seek=curr;
+	seek=start;
     for(int i=0; i++;){
 	if(seek->tail==true){
 		cout<<"size is "<<i;
 	}
 	seek=seek->next;
 	}
+    return 0;
 }
 
 void insert(int pos, int val){
-	if(curr->next ==NULL){//if inseting when the list is empty
+	if(start==NULL){//if inseting when the list is empty
 		node *b= new node;
 		b->next = b;
+        b->contents=val;
 		b->tail=true;
         return;
 	}
-	
+
     node *b= new node;
-		seek=curr->next;
+    b->contents= val;
+		seek=start;
     for(int i=0;i<=pos; i++){
 		if(seek->tail==true){//if inserting at the end
 			seek->tail=false;
 			b->tail=true;
 			seek->next=b;
-			b->next=curr->next;
+			b->next=start;
+            return;
 		}
 		if(pos==i){//if inserting between two nodes
 			b->next = seek->next;
 			seek->next = b;
+            return;
 		}
             seek=seek->next;
 	}
 	}
-void remove(int a){//will be completed in the near future
+void remove(int a){
+    seek=start;
+     for(int i=0;i<=a-1; i++){
+        if(i<a){
+            seek=seek->next;
+            return;
+        }
+        if(i==a-1){
 
 }
-    
-    void display(){//will also be completed in the near future
-        
+     }
+}
+
+    void display(){
+        seek=start;
+        while(seek->tail==false){
+           cout<<seek->contents<<"\n";
+            seek=seek->next;
+        }
+        if(seek->tail==true){
+           cout<<seek->contents<<"\n";
+           return;
+        }
     }
-};	
+};
